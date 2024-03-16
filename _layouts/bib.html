@@ -185,6 +185,18 @@
           {%- if entry.website %}
             <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
           {%- endif %}
+          {%- if entry.media %}
+          <a href="{{ entry.media}}" class="btn btn-sm z-depth-0" role="button">Media</a>
+          {%- endif %}
+          {%- if entry.demo %}
+          <a href="{{ entry.demo}}" class="btn btn-sm z-depth-0" role="button">Public Demo</a>
+          {%- endif %}
+          {%- if entry.demo1 %}
+          <a href="{{ entry.demo1}}" class="btn btn-sm z-depth-0" role="button">Public Demo 1</a>
+          {%- endif %}
+          {%- if entry.demo2 %}
+          <a href="{{ entry.demo2}}" class="btn btn-sm z-depth-0" role="button">Public Demo 2</a>
+          {%- endif %}
           </div>
           {% if site.badges %}
           <div class="badges">
