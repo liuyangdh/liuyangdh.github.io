@@ -238,7 +238,8 @@ defaults:
       sitemap: false
 
 sass:
-  style: compressed
+  # # style: compressed
+  # sourcemap: never
 
 # -----------------------------------------------------------------------------
 # Jekyll Minifier
