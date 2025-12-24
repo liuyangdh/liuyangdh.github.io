@@ -23,7 +23,7 @@ social: true  # includes social icons at the bottom of the page
 ---
 I am a PhD student in robotics at [LASA](https://www.epfl.ch/labs/lasa/), EPFL, supervised by [Prof. Aude Billard](https://people.epfl.ch/aude.billard).
 
-**Research.** Amazed by we human's dexterous, adaptive and yet unconscious sensorimotor skills, my research is about trying to understand such [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox#:~:text=Moravec's%20paradox%20is%20the%20observation,skills%20require%20enormous%20computational%20resources.), by designing reliable and run-time efficient algorithms for robots. Currently, I am working on robot throwing.
+**Research.** Amazed by our human's dexterous, adaptive and yet unconscious sensorimotor skills, my research is about trying to understand such [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox#:~:text=Moravec's%20paradox%20is%20the%20observation,skills%20require%20enormous%20computational%20resources.), by designing reliable and run-time efficient algorithms for robots. Currently, I am working on robot throwing.
 
 <!-- Fascinated by the [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox#:~:text=Moravec's%20paradox%20is%20the%20observation,skills%20require%20enormous%20computational%20resources.) - simply put, sensorimotor skills skills require enormous compute -->
 
