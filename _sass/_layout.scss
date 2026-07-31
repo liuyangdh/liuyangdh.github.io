@@ -55,7 +55,7 @@ body.sticky-bottom-footer {
   gap: 1rem;
 
   .video-item {
-    flex: 1 1 calc(33.333% - 1rem);
+    flex: 0 1 calc(50% - 0.5rem);
     min-width: 200px;
     text-align: center;
 

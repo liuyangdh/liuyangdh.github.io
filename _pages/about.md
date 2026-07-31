@@ -21,7 +21,7 @@ latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-I am a Postdoctoral Researcher at the [Learning Algorithms and Systems Laboratory (LASA)](https://www.epfl.ch/labs/lasa/), EPFL. My research focuses on dynamic manipulation, contact modeling, and kinodynamic motion planning for robots.
+I am a Postdoctoral Researcher at the [Learning Algorithms and Systems Laboratory (LASA)](https://www.epfl.ch/labs/lasa/), EPFL. My research focuses on dynamic manipulation, contact modeling and simulation, and real-time motion generation.
 
 I obtained my PhD from EPFL in 2025 supervised by [Prof. Aude Billard](https://people.epfl.ch/aude.billard), where I studied *[Computational and Physical Structures in Robot Throwing](https://infoscience.epfl.ch/entities/publication/13e633d6-15e6-469b-9ce4-fd0a0b8242a0)*.
 
@@ -43,16 +43,22 @@ Previously, I received my M.Sc. in [Robotics, Systems and Control](https://maste
     <p>Robust Dexterous Throwing [<a href="https://ieeexplore.ieee.org/document/9981231">IROS'22</a>][<a href="https://ieeexplore.ieee.org/document/10494917">T-RO'24</a>]</p>
   </div>
   <div class="video-item">
-    <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
-      <source src="assets/video/throw-flip.mp4" type="video/mp4">
+    <video autoplay loop muted playsinline preload="auto" data-playback-rate="0.85" onclick="openLightbox(this)">
+      <source src="assets/video/hydroelastic-contact.mp4" type="video/mp4">
     </video>
-    <p>Throw-Flip [<a href="https://arxiv.org/abs/2510.10357">IROS'25</a>]</p>
+    <p>GPU-Accelerated Hydroelastic Contact [<a href="https://openreview.net/forum?id=ogndqznZyY">CR2@ICRA'26</a>]</p>
   </div>
   <div class="video-item">
     <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
       <source src="assets/video/whole-body-throwing.mp4" type="video/mp4">
     </video>
     <p>Whole-body Throwing [<a href="https://arxiv.org/abs/2506.16986">IROS'25</a>]</p>
+  </div>
+  <div class="video-item">
+    <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
+      <source src="assets/video/throw-flip.mp4" type="video/mp4">
+    </video>
+    <p>Throw-Flip [<a href="https://arxiv.org/abs/2510.10357">IROS'25</a>]</p>
   </div>
 </div>
 </div>
@@ -66,14 +72,25 @@ Previously, I received my M.Sc. in [Robotics, Systems and Control](https://maste
 </div>
 
 <script>
+// Videos with a data-playback-rate attribute play slower/faster than realtime.
+document.querySelectorAll('.video-item video[data-playback-rate]').forEach(function (video) {
+  const rate = parseFloat(video.dataset.playbackRate);
+  video.playbackRate = rate;
+  // Some browsers reset the rate once the media is (re)loaded.
+  video.addEventListener('loadedmetadata', function () { video.playbackRate = rate; });
+});
+
 function openLightbox(videoElement) {
   const lightbox = document.getElementById('videoLightbox');
   const lightboxVideo = document.getElementById('lightboxVideo');
   const source = videoElement.querySelector('source').src;
+  const rate = parseFloat(videoElement.dataset.playbackRate) || 1;
 
   lightboxVideo.querySelector('source').src = source;
   lightboxVideo.load();
+  lightboxVideo.playbackRate = rate;
   lightboxVideo.play();
+  lightboxVideo.playbackRate = rate;
   lightbox.classList.add('active');
   document.body.style.overflow = 'hidden';
 }
