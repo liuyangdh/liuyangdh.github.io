@@ -1,0 +1,36 @@
+---
+layout: page
+title: Fast Planning for Multi-object Multi-target Throwing
+permalink: /momt-video/
+nav: false
+video_url: /assets/video/IROS2026_Paper3056_MOMT_Presentation.mp4
+paper_url: /assets/pdf/multi_object_multi_target_throwing_iros26.pdf
+# Keep the permalink unchanged. To switch hosting later, set this to the
+# official YouTube embed URL (https://www.youtube.com/embed/VIDEO_ID).
+youtube_embed_url:
+---
+
+<p class="mb-1">Zhengming Zhu<sup>*</sup>, Yang Liu<sup>*†</sup>, Xiao Gao, Aude Billard</p>
+<p class="small mb-2"><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</p>
+<p class="mb-4"><em>IROS 2026</em></p>
+
+<div class="embed-responsive embed-responsive-16by9 rounded">
+  {% if page.youtube_embed_url %}
+  <iframe class="embed-responsive-item" src="{{ page.youtube_embed_url }}"
+    title="Fast Planning for Multi-object Multi-target Throwing — presentation"
+    loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+  {% else %}
+  <video class="embed-responsive-item" controls playsinline preload="metadata"
+    aria-label="Fast Planning for Multi-object Multi-target Throwing — presentation">
+    <source src="{{ page.video_url | relative_url }}" type="video/mp4">
+    <a href="{{ page.video_url | relative_url }}">Watch the MOMT presentation</a>.
+  </video>
+  {% endif %}
+</div>
+
+<p class="mt-3">
+  <a href="{{ page.paper_url | relative_url }}">Paper</a>
+  <span aria-hidden="true"> · </span>
+  <a href="{{ '/publications/' | relative_url }}">Publications</a>
+</p>
