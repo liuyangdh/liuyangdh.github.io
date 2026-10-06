@@ -14,14 +14,17 @@ youtube_embed_url:
 <p class="small mb-2"><sup>*</sup> Equal contribution. <sup>†</sup> Corresponding author.</p>
 <p class="mb-4"><em>IROS 2026</em></p>
 
-<div class="embed-responsive embed-responsive-16by9 rounded">
+{% comment %}Keep player sizing independent of cached, production-purged Bootstrap CSS.{% endcomment %}
+<div class="rounded" style="position: relative; width: 100%; padding-top: 56.25%; overflow: hidden;">
   {% if page.youtube_embed_url %}
-  <iframe class="embed-responsive-item" src="{{ page.youtube_embed_url }}"
+  <iframe style="position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%; border: 0;"
+    src="{{ page.youtube_embed_url }}"
     title="Fast Planning for Multi-object Multi-target Throwing — presentation"
     loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen></iframe>
   {% else %}
-  <video class="embed-responsive-item" controls playsinline preload="metadata"
+  <video style="position: absolute; top: 0; left: 0; display: block; width: 100%; height: 100%;"
+    controls playsinline preload="metadata"
     aria-label="Fast Planning for Multi-object Multi-target Throwing — presentation">
     <source src="{{ page.video_url | relative_url }}" type="video/mp4">
     <a href="{{ page.video_url | relative_url }}">Watch the MOMT presentation</a>.
