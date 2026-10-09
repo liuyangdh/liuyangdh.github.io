@@ -32,13 +32,13 @@ I obtained my PhD from [EPFL](https://www.epfl.ch/labs/lasa/) in 2025 supervised
 <!-- **Research.** Amazed by our human's dexterous, adaptive and yet unconscious sensorimotor skills, my research is about trying to understand such [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox#:~:text=Moravec's%20paradox%20is%20the%20observation,skills%20require%20enormous%20computational%20resources.), by designing reliable and run-time efficient algorithms for robots.  -->
 
 <div class="highlights-section">
-<h2>Highlights</h2>
+<h2 id="highlights">Highlights</h2>
 <div class="video-highlights">
-  <div class="video-item">
-    <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
-      <source src="assets/video/reactive_robust_dexterous_throwing.mp4" type="video/mp4">
+  <div class="video-item" id="boomerang-highlight">
+    <video autoplay loop muted playsinline preload="auto" data-full-video="{{ '/assets/video/boomerang-teaser-clean.mp4' | relative_url }}" aria-label="Boomerang throwing: model-guided design and returning flight. Click for the full video." onclick="openLightbox(this)">
+      <source src="{{ '/assets/video/boomerang-highlight-clean.mp4' | relative_url }}" type="video/mp4">
     </video>
-    <p>Robust Dexterous Throwing [<a href="https://ieeexplore.ieee.org/document/9981231">IROS'22</a>][<a href="https://ieeexplore.ieee.org/document/10494917">T-RO'24</a>]</p>
+    <p>Robotic Boomerang Throwing [<a href="https://arxiv.org/abs/2610.10472">arXiv'26</a>]</p>
   </div>
   <div class="video-item">
     <video autoplay loop muted playsinline preload="auto" data-playback-rate="0.85" onclick="openLightbox(this)">
@@ -46,17 +46,29 @@ I obtained my PhD from [EPFL](https://www.epfl.ch/labs/lasa/) in 2025 supervised
     </video>
     <p>GPU-Accelerated Hydroelastic Contact [<a href="https://openreview.net/forum?id=ogndqznZyY">CR2@ICRA'26</a>]</p>
   </div>
-  <div class="video-item">
-    <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
-      <source src="assets/video/whole-body-throwing.mp4" type="video/mp4">
+  <div class="video-item" id="momt-highlight">
+    <video autoplay loop muted playsinline preload="auto" data-full-video="{{ '/assets/video/IROS2026_Paper3056_MOMT_Presentation.mp4' | relative_url }}" aria-label="Multi-object multi-target throwing. Click for the full presentation." onclick="openLightbox(this)">
+      <source src="{{ '/assets/video/momt-highlight-crop.mp4' | relative_url }}" type="video/mp4">
     </video>
-    <p>Whole-body Throwing [<a href="https://arxiv.org/abs/2506.16986">IROS'25</a>]</p>
+    <p>Multi-object Multi-target Throwing [<a href="https://arxiv.org/abs/2610.09224">IROS'26</a>]</p>
   </div>
   <div class="video-item">
     <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
       <source src="assets/video/throw-flip.mp4" type="video/mp4">
     </video>
     <p>Throw-Flip [<a href="https://arxiv.org/abs/2510.10357">IROS'25</a>]</p>
+  </div>
+  <div class="video-item">
+    <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
+      <source src="assets/video/reactive_robust_dexterous_throwing.mp4?v=20261009" type="video/mp4">
+    </video>
+    <p>Robust Dexterous Throwing [<a href="https://ieeexplore.ieee.org/document/9981231">IROS'22</a>][<a href="https://ieeexplore.ieee.org/document/10494917">T-RO'24</a>]</p>
+  </div>
+  <div class="video-item">
+    <video autoplay loop muted playsinline preload="auto" onclick="openLightbox(this)">
+      <source src="assets/video/whole-body-highlight.mp4" type="video/mp4">
+    </video>
+    <p>Whole-body Throwing [<a href="https://arxiv.org/abs/2506.16986">IROS'25</a>]</p>
   </div>
 </div>
 </div>
@@ -70,42 +82,87 @@ I obtained my PhD from [EPFL](https://www.epfl.ch/labs/lasa/) in 2025 supervised
 </div>
 
 <script>
-// Videos with a data-playback-rate attribute play slower/faster than realtime.
-document.querySelectorAll('.video-item video[data-playback-rate]').forEach(function (video) {
-  const rate = parseFloat(video.dataset.playbackRate);
-  video.playbackRate = rate;
-  // Some browsers reset the rate once the media is (re)loaded.
-  video.addEventListener('loadedmetadata', function () { video.playbackRate = rate; });
+const highlightVideos = Array.from(document.querySelectorAll('.video-item video'));
+const highlightLightbox = document.getElementById('videoLightbox');
+
+function shouldPlayPreview() {
+  return !document.hidden && !highlightLightbox.classList.contains('active');
+}
+
+function playPreview(video) {
+  if (!shouldPlayPreview(video) || !video.paused) return;
+  video.muted = true;
+  video.playbackRate = parseFloat(video.dataset.playbackRate) || 1;
+  const play = video.play();
+  if (play) play.catch(function () {});
+}
+
+function updateHighlightPlayback() {
+  highlightVideos.forEach(function (video) {
+    if (shouldPlayPreview(video)) playPreview(video);
+    else video.pause();
+  });
+}
+
+highlightVideos.forEach(function (video) {
+  video.muted = true;
+  video.defaultMuted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.playbackRate = parseFloat(video.dataset.playbackRate) || 1;
+  video.addEventListener('loadedmetadata', function () {
+    video.playbackRate = parseFloat(video.dataset.playbackRate) || 1;
+    playPreview(video);
+  });
+  video.addEventListener('canplay', function () { playPreview(video); });
+  // Keep every preview looping while this page is active, including lower rows.
+  video.addEventListener('pause', function () {
+    if (shouldPlayPreview(video)) requestAnimationFrame(function () { playPreview(video); });
+  });
+  video.addEventListener('ended', function () {
+    if (shouldPlayPreview(video)) {
+      video.currentTime = 0;
+      playPreview(video);
+    }
+  });
 });
 
+document.addEventListener('visibilitychange', updateHighlightPlayback);
+window.addEventListener('pageshow', updateHighlightPlayback);
+window.addEventListener('focus', updateHighlightPlayback);
+window.addEventListener('resize', updateHighlightPlayback);
+document.addEventListener('pointerdown', updateHighlightPlayback, { once: true });
+updateHighlightPlayback();
+
 function openLightbox(videoElement) {
-  const lightbox = document.getElementById('videoLightbox');
   const lightboxVideo = document.getElementById('lightboxVideo');
-  const source = videoElement.querySelector('source').src;
+  const source = videoElement.dataset.fullVideo || videoElement.querySelector('source').src;
   const rate = parseFloat(videoElement.dataset.playbackRate) || 1;
 
+  highlightLightbox.classList.add('active');
+  highlightVideos.forEach(function (video) { video.pause(); });
+  document.body.style.overflow = 'hidden';
   lightboxVideo.querySelector('source').src = source;
+  lightboxVideo.addEventListener('loadedmetadata', function () {
+    lightboxVideo.playbackRate = rate;
+  }, { once: true });
   lightboxVideo.load();
   lightboxVideo.playbackRate = rate;
-  lightboxVideo.play();
-  lightboxVideo.playbackRate = rate;
-  lightbox.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  const play = lightboxVideo.play();
+  if (play) play.catch(function () {});
 }
 
 function closeLightbox(event) {
   if (event.target.tagName === 'VIDEO') return;
-  const lightbox = document.getElementById('videoLightbox');
-  const lightboxVideo = document.getElementById('lightboxVideo');
-
-  lightboxVideo.pause();
-  lightbox.classList.remove('active');
+  document.getElementById('lightboxVideo').pause();
+  highlightLightbox.classList.remove('active');
   document.body.style.overflow = '';
+  updateHighlightPlayback();
 }
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') {
-    closeLightbox({target: document.getElementById('videoLightbox')});
+document.addEventListener('keydown', function (event) {
+  if (event.key === 'Escape' && highlightLightbox.classList.contains('active')) {
+    closeLightbox({ target: highlightLightbox });
   }
 });
 </script>
