@@ -21,15 +21,13 @@ latest_posts: false  # includes a list of the newest posts
 selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
-I am a Postdoctoral Researcher at the [Learning Algorithms and Systems Laboratory (LASA)](https://www.epfl.ch/labs/lasa/), EPFL. My research focuses on dynamic manipulation, contact modeling and simulation, and real-time motion generation.
+My research focuses on robotic dynamic manipulation and physical interaction. Currently, I'm a Member of Technical Staff at [Enact Intelligence](https://enact-intelligence.com/), working on force-aware robotic manipulation.
 
-I obtained my PhD from EPFL in 2025 supervised by [Prof. Aude Billard](https://people.epfl.ch/aude.billard), where I studied *[Computational and Physical Structures in Robot Throwing](https://infoscience.epfl.ch/entities/publication/13e633d6-15e6-469b-9ce4-fd0a0b8242a0)*.
+I obtained my PhD from [EPFL](https://www.epfl.ch/labs/lasa/) in 2025 supervised by [Prof. Aude Billard](https://people.epfl.ch/aude.billard), where I discovered some *[Computational and Physical Structures in Robot Throwing](https://infoscience.epfl.ch/entities/publication/13e633d6-15e6-469b-9ce4-fd0a0b8242a0)*. Previously, I received my M.Sc. in [Robotics, Systems and Control](https://master-robotics.ethz.ch/) from [ETH Zurich](https://ethz.ch/en.html) and my B.Eng. in Mechanical Engineering from [Jilin University](https://mae.jlu.edu.cn/en/).
 
 <!-- Fascinated by the [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox#:~:text=Moravec's%20paradox%20is%20the%20observation,skills%20require%20enormous%20computational%20resources.) - simply put, sensorimotor skills skills require enormous compute -->
 
 <!-- # Amazed by the dexterity and robustness of human manipulation,  -->
-
-Previously, I received my M.Sc. in [Robotics, Systems and Control](https://master-robotics.ethz.ch/) from [ETH Zurich](https://ethz.ch/en.html) and my B.Eng. in Mechanical Engineering from [Jilin University](https://mae.jlu.edu.cn/en/).
 
 <!-- **Research.** Amazed by our human's dexterous, adaptive and yet unconscious sensorimotor skills, my research is about trying to understand such [Moravec's paradox](https://en.wikipedia.org/wiki/Moravec%27s_paradox#:~:text=Moravec's%20paradox%20is%20the%20observation,skills%20require%20enormous%20computational%20resources.), by designing reliable and run-time efficient algorithms for robots.  -->
 
