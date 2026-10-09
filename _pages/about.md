@@ -38,7 +38,7 @@ I obtained my PhD from [EPFL](https://www.epfl.ch/labs/lasa/) in 2025 supervised
     <video autoplay loop muted playsinline preload="auto" data-full-video="{{ '/assets/video/boomerang-teaser-clean.mp4' | relative_url }}" aria-label="Boomerang throwing: model-guided design and returning flight. Click for the full video." onclick="openLightbox(this)">
       <source src="{{ '/assets/video/boomerang-highlight-clean.mp4' | relative_url }}" type="video/mp4">
     </video>
-    <p>Robotic Boomerang Throwing [<a href="https://arxiv.org/abs/2610.10472">arXiv'26</a>]</p>
+    <p>Robotic Boomerang Throwing [<a href="https://robot-boomerang.github.io/">Project</a>] [<a href="https://arxiv.org/abs/2610.10472">arXiv'26</a>]</p>
   </div>
   <div class="video-item">
     <video autoplay loop muted playsinline preload="auto" data-playback-rate="0.85" onclick="openLightbox(this)">
